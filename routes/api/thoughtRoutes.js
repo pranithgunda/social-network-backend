@@ -4,7 +4,9 @@ const { Thought, User } = require('../../models');
 // Get all thoughts
 router.get('/', async (req, res) => {
     try {
-        const thoughts = await Thought.find();
+        const thoughts = await Thought.find()
+        // exclude document vetsion key
+        .select('-__v');
         res.status(200).json(thoughts);
     } catch (err) {
         console.error(err);
@@ -15,7 +17,9 @@ router.get('/', async (req, res) => {
 // Get thought by id
 router.get('/:id', async (req, res) => {
     try {
-        const thought = await Thought.findById({ _id: req.params.id });
+        const thought = await Thought.findById({ _id: req.params.id })
+        // exclude document version key
+        .select('-__v');
         if (!thought) {
             res.status(404).json({ message: 'No thought found with that id' });
             return;
