@@ -12,6 +12,20 @@ router.get('/', async (req, res) => {
     }
 });
 
+// Get thought by id
+router.get('/:id', async (req, res) => {
+    try {
+        const thought = await Thought.findById({ _id: req.params.id });
+        if (!thought) {
+            res.status(404).json({ message: 'No thought found with that id' });
+        }
+        res.status(200).json(thought);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+})
+
 // Add a thought
 router.post('/', async (req, res) => {
     try {
