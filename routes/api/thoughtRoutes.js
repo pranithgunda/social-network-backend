@@ -97,5 +97,25 @@ router.post('/:thoughtId/reactions', async (req, res) => {
     }
 })
 
+// Delete thought reaction
+router.delete('/:thoughtId/reactions/:reactionId', async (req, res) => {
+    try {
+        const thought = await Thought.findOneAndUpdate(
+            { _id: req.params.thoughtId },
+            // use pull operator to remove specific element from an array
+            { $pull: { reactions: { reactionId: req.params.reactionId } } },
+            { runValidators: true, new: true }
+        )
+        console.log(thought);
+        if (!thought) {
+            res.status(404).json({ message: 'No thought found with that id' });
+            return;
+        }
+        res.status(200).json(thought)
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+});
 
 module.exports = router;
