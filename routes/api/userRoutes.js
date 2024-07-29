@@ -83,12 +83,13 @@ router.post('/:userId/friends/:friendId', async (req, res) => {
             res.status(404).json({ message: 'No user found with that id' });
             return;
         }
-        res.json(200).json(user);
+        res.status(200).json(user);
     } catch (err) {
         console.error(err);
         res.status(200).json(err);
     }
 });
+
 
 module.exports = router;
 
