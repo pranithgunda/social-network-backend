@@ -57,17 +57,36 @@ router.put('/:id', async (req, res) => {
 
 // Delete a user
 
-router.delete('/:id', async (req,res) => {
-    try{
-        const deleteUser =  await User.findOneAndDelete({_id:req.params.id});
-        if(!deleteUser){
+router.delete('/:id', async (req, res) => {
+    try {
+        const deleteUser = await User.findOneAndDelete({ _id: req.params.id });
+        if (!deleteUser) {
             res.status(404).json({ message: 'No user found with that id' });
             return;
         }
-        res.status(200).json({message:'User deleted successfully'});
-    } catch (err){
+        res.status(200).json({ message: 'User deleted successfully' });
+    } catch (err) {
         console.error(err);
         res.status(500).json(err);
+    }
+});
+
+// Add friend to user
+router.post('/:userId/friends/:friendId', async (req, res) => {
+    try {
+        const user = await User.findOneAndUpdate(
+            { _id: req.params.userId },
+            { $addToSet: { friends: req.params.friendId } },
+            { new: true }
+        );
+        if (!user) {
+            res.status(404).json({ message: 'No user found with that id' });
+            return;
+        }
+        res.json(200).json(user);
+    } catch (err) {
+        console.error(err);
+        res.status(200).json(err);
     }
 });
 
