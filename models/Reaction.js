@@ -1,4 +1,6 @@
-const {Schema,Types} = require('mongoose');
+const { Schema, Types } = require('mongoose');
+// Import the function to format timestamp
+const formatTimestamp = require('../utils/functions.js')
 
 // Schema for reactions
 
@@ -9,7 +11,13 @@ const reactionSchema = new Schema({
     },
     reactionBody: { type: String, required: true, maxLength: 280 },
     username: { type: String, required: true },
-    createdAt: { type: Date, default: Date.now }
-});
+    createdAt: { type: Date, default: Date.now, get: timestamp => formatTimestamp(timestamp) }
+},
+    {
+        toJSON: {
+            // set getters to true, to execute formatTimestamp function
+            getters: true,
+        },
+    });
 
 module.exports = reactionSchema;
