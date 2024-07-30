@@ -17,4 +17,4 @@ Models defined include User, Thoughts and Reactions. Users can add thoughts, sha
 
 ## Link To Walkthrough Video
 
-https://app.screencastify.com/v2/manage/videos/90ils0ogNVeRuPeyJ58I
+https://drive.google.com/file/d/1ciBu706-_SIlKDL3-eSJUh00g5e9Octj/view
