@@ -1,9 +1,9 @@
 # SOCIAL-NETWORK-BACKEND
 
 ## Description
-Social Network Backend application is a framework designed for Social Networking Sites. This framework can easily be adapted by Social Networking Sites to built upon. The application offers models designed in NoSQL database and has APIs exposed to perform CRUD operations on the model seamlessly.
+Social Network Backend application is a framework designed for Social Networking Sites. This framework can easily be adapted by Social Networking Sites to built upon. The application offers models that interact with collections in NoSQL Mongo database and has APIs exposed to perform CRUD operations on the collections.
 
-Models defined include User, Thoughts and Reactions. A user can make new friends using this application and share thoughts and reactions. The application leverages MongoDB as NoSQL database and APIs exposed through express, perform seamless CRUD operations using mongoose.
+Models defined include User, Thoughts and Reactions. Users can add thoughts, share reactions and make new friends with other users. Application leverages MongoDB as NoSQL database and APIs exposed through express perform CRUD operations using mongoose.
 
 ## Screenshots
 
@@ -16,4 +16,5 @@ Models defined include User, Thoughts and Reactions. A user can make new friends
 ![Add Thought](<assets/images/Add Thought.png>)
 
 ## Link To Walkthrough Video
-TBD
+
+https://app.screencastify.com/v2/manage/videos/90ils0ogNVeRuPeyJ58I
