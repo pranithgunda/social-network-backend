@@ -111,7 +111,7 @@ router.delete('/:thoughtId/reactions/:reactionId', async (req, res) => {
         const thought = await Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
             // use pull operator to remove specific element from an array, remove reaction associated with thought
-            { $pull: { reactions: { reactionId: req.params.reactionId } } },
+            { $pull: { reactions: { _id: req.params.reactionId } } },
             // {new:true} will return updated document
             { runValidators: true, new: true }
         );
