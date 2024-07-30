@@ -8,13 +8,14 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 // Middleware
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // expose routes
 app.use(routes);
 
-db.once('open',()=>{
-    app.listen(PORT,()=>{
+// 
+db.once('open', () => {
+    app.listen(PORT, () => {
         console.log(`App running on server ${PORT}`);
     });
 });

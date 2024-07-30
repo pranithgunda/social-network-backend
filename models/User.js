@@ -22,6 +22,19 @@ const userSchema = new Schema({
     },
     thoughts: [{ type: Schema.Types.ObjectId, ref: 'thought' }],
     friends: [{ type: Schema.Types.ObjectId, ref: 'user' }]
+},
+    {
+        toJSON: {
+            // set virtuals to true, to return virtual property
+            virtuals: true,
+        },
+        // set id to false, so id will not be repeated
+        id: false,
+    });
+
+// Virtual property friendCount, to get count of friends for a given user
+userSchema.virtual('friendCount').get(function () {
+    return this.friends.length
 });
 
 // Initialize user model
